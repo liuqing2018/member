@@ -1,10 +1,19 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
+import Components from 'unplugin-vue-components/dist/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/dist/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [
+        AntDesignVueResolver(),
+      ],
+    }),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'), // 设置'@'指向'src'目录
@@ -24,5 +33,5 @@ export default defineConfig({
     //     }
     //   }
     // }
-  }
+  },
 })

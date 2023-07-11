@@ -11,10 +11,9 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: import('../views/demo/demo1（数据类型）.vue'),
+    component: () => import('../views/main/index.vue'),
   },
   ...demo,
-,
 ]
 const router = createRouter({
   history: createWebHashHistory(),

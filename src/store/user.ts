@@ -7,16 +7,16 @@ export const user = defineStore('user', {
     }
   },
   getters: {
-    getUserName: ({ user }) => {
-      return user.name;
+    getUserName: (state ) => {
+      return state.user;
     }
   },
   actions: {
     // async getUserInfo () {
     //   await api.getUserInfo();
     // },
-    setUser: (payload) => {
+    setUser(payload: any): void {
       this.user = payload;
-    }
+    },
   }
 });

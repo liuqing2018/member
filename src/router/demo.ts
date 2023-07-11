@@ -1,7 +1,8 @@
 import { h } from 'vue';
 import {
   RouterView,
-  RouteComponent, RouteRecordRaw,
+  // RouteComponent,
+  RouteRecordRaw,
 } from 'vue-router';
 
 const demo: Array<RouteRecordRaw> = [
@@ -45,6 +46,6 @@ const demo: Array<RouteRecordRaw> = [
         component: () => import('../views/demo/demo6（常用技巧）.vue'),
       }
     ]
-  }
+  },
 ];
 export default demo;

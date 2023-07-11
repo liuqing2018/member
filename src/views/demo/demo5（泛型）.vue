@@ -36,50 +36,50 @@
 //   return list;
 // }
 // 泛型函数
-const getList = <T>(data: T): T[] => {
-  let list = [];
-  for (let i = 0; i < 3; i++) {
-    list.push(data);
-  }
-  return list;
-}
-
-const result: string[] = getList<string>('abc');
-const result2: number[] = getList<number>(12);
-
-console.log(result);
-console.log(result2);
-
-// 范型接口
-interface User<T, K> {
-  name: T,
-  age: K,
-}
-
-const user: User<string, number> = {
-  name: 'link',
-  age: 123
-}
-
-// 范型类: 可以指定泛型的默认类型，从实际参数中无法推断类型的时候，这个默认值就会起作用
-class Person<T = number> {
-  private arr: T[] = [];
-
-  add(value: T) {
-    this.arr.push(value);
-  }
-
-  getValue(index: number): T {
-    return this.arr[index];
-  }
-}
-
-const p1 = new Person();
-p1.add<number>(11);
-p1.add<number>(22);
-
-const result1 = p1.getValue(0);
-console.log(result1);
+// const getList = <T>(data: T): T[] => {
+//   let list = [];
+//   for (let i = 0; i < 3; i++) {
+//     list.push(data);
+//   }
+//   return list;
+// }
+//
+// const result: string[] = getList<string>('abc');
+// const result2: number[] = getList<number>(12);
+//
+// console.log(result);
+// console.log(result2);
+//
+// // 范型接口
+// interface User<T, K> {
+//   name: T,
+//   age: K,
+// }
+//
+// const user: User<string, number> = {
+//   name: 'link',
+//   age: 123
+// }
+//
+// // 范型类: 可以指定泛型的默认类型，从实际参数中无法推断类型的时候，这个默认值就会起作用
+// class Person<T = number> {
+//   private arr: T[] = [];
+//
+//   add(value: T) {
+//     this.arr.push(value);
+//   }
+//
+//   getValue(index: number): T {
+//     return this.arr[index];
+//   }
+// }
+//
+// const p1 = new Person();
+// p1.add<number>(11);
+// p1.add<number>(22);
+//
+// const result1 = p1.getValue(0);
+// console.log(result1);
 
 </script>
 

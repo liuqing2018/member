@@ -10,24 +10,24 @@
 </template>
 
 <script setup lang="ts">
-interface user {
-  name: string;
-  age: number;
-  [propname: string]: any,
-}
-
-interface child extends user {
-  gender: string,
-}
-let stu: child = {
-  name: 'link',
-  age: 20,
-  gender: '男',
-  weixin: 'link10234',
-  qq: 1502323
-}
-
-console.log(stu);
+// interface user {
+//   name: string;
+//   age: number;
+//   [propname: string]: any,
+// }
+//
+// interface child extends user {
+//   gender: string,
+// }
+// let stu: child = {
+//   name: 'link',
+//   age: 20,
+//   gender: '男',
+//   weixin: 'link10234',
+//   qq: 1502323
+// }
+//
+// console.log(stu);
 
 
 </script>

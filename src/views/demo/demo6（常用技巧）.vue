@@ -56,13 +56,13 @@
 
 <script setup lang="ts">
 // infer: 可以使用条件语句声明一个类型变量
-type Info <T> = T extends {
-  a: infer U;
-  b: infer U
-} ? U : never;
-
-type Props = Info<{a: string, b: number}>
-type props1 = Info<number> //
+// type Info <T> = T extends {
+//   a: infer U;
+//   b: infer U
+// } ? U : never;
+//
+// type Props = Info<{a: string, b: number}>
+// type props1 = Info<number> //
 
 
 </script>
