@@ -14,9 +14,6 @@ interface UserInfo {
   name: string
   age: number
   gender: string
-  gender: string
-  gender: string
-  gender: string
   hobby: string[]
 }
 
