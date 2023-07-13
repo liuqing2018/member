@@ -8,7 +8,6 @@
   #name4: string; // 私有字段 使用了#就能用其他修饰符
   public readonly name5: string = 'I"m link 5';
 
-
   // 构造方法
   constructor(public name2: string) {}
 
@@ -67,12 +66,10 @@ let name = Info.name;
 // 2.protected: 类中、子类的地方都可以调用，外部不能调用
 // 3.private: 类中可以调用，子类、外部不可以调用(#号是Ecma定义的私有属性，一样生效)
 
-
 // 私有属性
 // console.log(info.#name4); // error
 // console.log('name4: ', info.name4 = '我是link 4');
 // console.log('name4: ', info.name4); // 我是link 4
-
 
 // extends 继承
 // 1.子类可以继承父类的非私有属性和方法
@@ -104,7 +101,6 @@ class Children extends Person {
     // this.ID = 100; // error
   }
 }
-
 
 const child = new Children('Link', 18, '523adf', 'abc');
 // console.log('child.name: ', child.name);
@@ -158,7 +154,6 @@ class Children3 extends Person3 {
 const youname = new Children3();
 // console.log(youname.setName('Tim'));
 
-
 class Person4 {
   setNameAndAge(name: string): void;
   setNameAndAge(name: number): void;
@@ -174,7 +169,6 @@ class Person4 {
 const child4 = new Person4();
 // child4.setNameAndAge('小明');
 // child4.setNameAndAge(10);
-
 
 class Person5 {
   private _name: string;

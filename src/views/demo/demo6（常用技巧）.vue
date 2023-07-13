@@ -64,9 +64,7 @@
 // type Props = Info<{a: string, b: number}>
 // type props1 = Info<number> //
 
-
 </script>
-
 
 <style scoped>
 

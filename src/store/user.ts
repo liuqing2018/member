@@ -7,7 +7,7 @@ export const user = defineStore('user', {
     }
   },
   getters: {
-    getUserName: (state ) => {
+    getUserName: (state) => {
       return state.user;
     }
   },
@@ -15,7 +15,7 @@ export const user = defineStore('user', {
     // async getUserInfo () {
     //   await api.getUserInfo();
     // },
-    setUser(payload: any): void {
+    setUser (payload: any): void {
       this.user = payload;
     },
   }
