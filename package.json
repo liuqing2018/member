@@ -13,7 +13,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{vue,js,ts}": "eslint --fix"
+    "*.{vue,js,ts}": "eslint"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.20",
