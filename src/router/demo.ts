@@ -2,15 +2,15 @@ import { h } from 'vue';
 import {
   RouterView,
   // RouteComponent,
-  RouteRecordRaw,
 } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
-const demo: Array<RouteRecordRaw> = [
+const demo: RouteRecordRaw[] = [
   {
     path: '/demo',
     name: 'demo',
     component: {
-      render() {
+      render () {
         return h(RouterView);
       }
     },

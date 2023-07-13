@@ -5,6 +5,7 @@
 // import demo4 from './components/demo4（接口interface）.vue';
 // import demo5 from './components/demo5（泛型）.vue';
 // import demo6 from './components/demo6（常用技巧）.vue';
+// let b:number='111' // 新增
 </script>
 
 <template>
@@ -13,7 +14,6 @@
     <p>
       <router-link to="/">Go to Home</router-link>
     </p>
-
 
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>

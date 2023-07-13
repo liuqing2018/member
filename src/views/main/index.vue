@@ -1,5 +1,4 @@
 <template>
-
   <h1>VITE_USER_NODE_ENV: {{envStr.VITE_USER_NODE_ENV}}</h1>
   <h1>MODE: {{envStr.MODE}}</h1>
   <a-button type="primary">Primary Button</a-button>
@@ -10,22 +9,23 @@
 </template>
 
 <script setup lang="ts">
-let envStr = import.meta.env;
+const envStr = import.meta.env;
 interface UserInfo {
-  name: string,
-  age: number,
-  gender: string,
-  hobby: string[],
+  name: string
+  age: number
+  gender: string
+  hobby: string[]
 }
 
-let user: UserInfo = {
+const user: UserInfo = {
   name: 'LinQ',
   age: 20,
   gender: 'male',
   hobby: ['music'],
 }
-
+// let a=10;
 console.log('user: ', user);
+console.log('envStr: ', envStr);
 // console.log('import.meta: ', import.meta);
 // console.log('import.meta.env: ', import.meta.env);
 </script>
