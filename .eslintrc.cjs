@@ -24,6 +24,9 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [
+    "/dist/assets/*.js" // 排除/dist/assets目录下的所有.js文件
+  ],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
