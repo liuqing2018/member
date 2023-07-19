@@ -8,7 +8,6 @@
   <a-button type="text">Text Button</a-button>
   <a-button type="link">Link Button</a-button>
   <a-input></a-input>
-
   <a-config-provider
     :theme="{
         token: {
@@ -20,6 +19,7 @@
     <a-button type="primary" @click="handleChange">change to red</a-button>
   </a-config-provider>
   <a-button @click="handleReset">Reset theme</a-button>
+  <div class="box"></div>
 </template>
 
 <script setup lang="ts">
@@ -47,6 +47,11 @@ const handleReset = (): void => {
 
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+.box {
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+  border: 1px solid red;
+}
 </style>
