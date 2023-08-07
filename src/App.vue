@@ -28,6 +28,9 @@ const store = global();
         <router-link to="/">Go to Home</router-link>
       </p>
 
+      <p>请求中的接口数量: {{store.crossCount}}</p>
+      <p>isLoading: {{store.loading}}</p>
+
       <!-- 路由匹配到的组件将渲染在这里 -->
       <router-view></router-view>
     </div>

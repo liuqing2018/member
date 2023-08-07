@@ -17,18 +17,18 @@ export default defineConfig({
     }
   },
   server: {
-    // port: 4000, // 服务器端口
-    // open: true, // 是否自动打开浏览器
-    // cors: true,
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://www.baidu.com',
-    //     changeOrigin: true,
-    //     secure: false,
-    //     rewrite: (path) => {
-    //       return path.replace('/api/', '/');
-    //     }
-    //   }
-    // }
+    port: 4000, // 服务器端口
+    open: true, // 是否自动打开浏览器
+    cors: true,
+    proxy: {
+      '/api': {
+        target: 'https://cupid-service.qa.linkdoc.com',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => {
+          return path.replace('/api/', '/');
+        }
+      }
+    }
   },
 })

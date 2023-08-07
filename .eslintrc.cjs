@@ -43,6 +43,7 @@ module.exports = {
     '@typescript-eslint/comma-dangle': 'off',
     '@typescript-eslint/promise-function-async': 'off',
     '@typescript-eslint/member-delimiter-style': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
     'vue/multi-word-component-names': 'off',
   },
 };

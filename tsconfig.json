@@ -34,7 +34,6 @@
     "src/**/*.vue",
     ".eslintrc.cjs",
     "vite.config.ts",
-    "components.d.ts",
     "vite-plugin-eslint.d.ts",
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
