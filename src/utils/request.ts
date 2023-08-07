@@ -1,9 +1,11 @@
 import axios from 'axios';
 import type {
   AxiosInstance,
+  AxiosRequestConfig,
   InternalAxiosRequestConfig,
   AxiosResponse,
   AxiosError,
+  Method,
 } from 'axios';
 import { isEmpty } from '@/utils/index';
 import { global } from '@/store/global';
@@ -198,33 +200,52 @@ instance.interceptors.response.use((response: AxiosResponse) => {
   return Promise.reject(httpStatusError);
 })
 
+const iAxios = <T, C>(method: Method, url: string, data?: T, config?: C): Promise<any> => {
+  const requestConfig: AxiosRequestConfig = {
+    method,
+    url,
+    ...config,
+  };
+
+  if (method.toLocaleLowerCase() === 'get') {
+    requestConfig.params = data;
+  } else {
+    requestConfig.data = data;
+  }
+
+  return instance.request(requestConfig).catch((error) => {
+    console.log('catch error ', error)
+    const { isAutoToast, isAutoCatch, data } = error;
+
+    if (isAutoToast === true) {
+      console.log('自动提示错误: ', data.description);
+      // FIXME:  message.error('data.description');
+    }
+
+    if (isAutoCatch === false) {
+      return Promise.reject(error);
+    }
+  })
+}
+
 const request = {
   get<T, C> (url: string, data: T, config?: C) {
-    // demo
-    return instance.get(url, {
-      params: data,
-      ...config
+    return iAxios('post', url, data, config);
+  },
+  post<T, C> (url: string, data: T, config?: C) {
+    return iAxios('post', url, data, config);
+  },
+  postForm<T, C> (url: string, data: T, config?: C) {
+    return iAxios('post', url, data, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      ...config,
     });
   },
-  post<T, C>(url: string, data: T, config?: C) {
-    return instance.post(url, data, {
-      ...config
-    }).then(() => {
-    }, (error) => {
-      return Promise.reject(error);
-    }).catch((error) => {
-      const { isAutoToast, isAutoCatch, data } = error;
-
-      if (isAutoToast === true) {
-        console.log('自动提示错误: ', data.description);
-        // FIXME:  message.error('data.description');
-      }
-
-      if (isAutoCatch === false) {
-        return Promise.reject(error);
-      }
-    });
-  }
+  native<C> (config: C) {
+    return instance.request(config);
+  },
 }
 
 export default request;
