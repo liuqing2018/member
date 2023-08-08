@@ -26,6 +26,7 @@ export const global = defineStore('global', {
     setTheme (theme: string): void {
       this.theme = theme;
     },
+    // 设置请求中接口的数量
     setCrossCount (isIncrement: boolean = true) {
       if (isIncrement) {
         this.crossCount++;

@@ -9,6 +9,7 @@ import type {
 } from 'axios';
 import { isEmpty } from '@/utils/index';
 import { global } from '@/store/global';
+import { message } from 'ant-design-vue';
 
 const store = global();
 
@@ -63,6 +64,8 @@ const config: any = {
 
 const instance: AxiosInstance = axios.create(config);
 
+const isIncrement: boolean = false;
+
 instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   // console.log('config: ', config);
 
@@ -81,9 +84,11 @@ instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   if (!isEmpty(abortController) && !repeatRequestList.includes(requestUrl)) {
     abortController.abort();
 
-    // 标记正在请求中的接口数量
-    const isIncrement: boolean = false;
+    // 清除本次请求接口次数寄存器
     store.setCrossCount(isIncrement);
+
+    // 清除本次请求记录
+    abortControllerMap.delete(requestUrl);
   }
 
   // 本次请求数据的格式
@@ -110,7 +115,7 @@ instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 
       abortControllerMap.set(requestUrl, abortController);
 
-      // 标记正在请求中的接口数量
+      // 累计正在请求中的接口数量
       store.setCrossCount();
     }
   }
@@ -140,7 +145,7 @@ instance.interceptors.response.use((response: AxiosResponse) => {
   } = config;
 
   if (!isEmpty(abortControllerMap.get(requestUrl))) {
-    const isIncrement: boolean = false;
+    // 清除本次请求接口次数寄存器
     store.setCrossCount(isIncrement);
 
     // 清除本次请求记录
@@ -180,9 +185,11 @@ instance.interceptors.response.use((response: AxiosResponse) => {
 }, (error: AxiosError) => {
   const { status }: { status: number } = error.response;
   const {
+    url: requestUrl,
     isAutoToast,
     isAutoCatch,
   }: {
+    url: string,
     isAutoToast: boolean,
     isAutoCatch: boolean,
   } = error.config;
@@ -196,6 +203,12 @@ instance.interceptors.response.use((response: AxiosResponse) => {
     isAutoCatch,
     sourceError: error, // 原始错误
   };
+
+  // 清除本次请求接口次数寄存器
+  store.setCrossCount(isIncrement);
+
+  // 清除本次请求记录
+  abortControllerMap.delete(requestUrl);
 
   return Promise.reject(httpStatusError);
 })
@@ -214,12 +227,11 @@ const iAxios = <T, C>(method: Method, url: string, data?: T, config?: C): Promis
   }
 
   return instance.request(requestConfig).catch((error) => {
-    console.log('catch error ', error)
     const { isAutoToast, isAutoCatch, data } = error;
 
     if (isAutoToast === true) {
-      console.log('自动提示错误: ', data.description);
-      // FIXME:  message.error('data.description');
+      console.log('isAutoToast : ', data.description);
+      message.error(data.description);
     }
 
     if (isAutoCatch === false) {
