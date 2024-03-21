@@ -33,6 +33,9 @@
 // const joinList = (data: any): any[] => {
 //   let list = [];
 //   for (let i = 0; i < 3; i++) {
+//   for (let i = 0; i < 3; i++) {
+//   for (let i = 0; i < 3; i++) {
+//   for (let i = 0; i < 3; i++) {
 //     list.push(data);
 //   }
 //   return list;
