@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
 import eslint from 'vite-plugin-eslint';
+import Components from 'unplugin-vue-components/dist/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/dist/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,6 +11,13 @@ export default defineConfig({
     vue(),
     eslint({
       lintOnStart: true,
+    }),
+    Components({
+      resolvers: [
+        AntDesignVueResolver({
+          importStyle: false, // css in js
+        }),
+      ],
     }),
   ],
   resolve: {
