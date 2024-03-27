@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "types": ["vite/client"],
     "target": "ES2015",
     "useDefineForClassFields": true,
@@ -21,6 +25,17 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/*.ts", "src/*.vue" ,"src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", ".eslintrc.cjs", "vite.config.ts"],
+  "include": [
+    "src/*.ts",
+    "src/*.vue",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    ".eslintrc.cjs",
+    "vite.config.ts",
+    "vite-plugin-eslint.d.ts",
+    "components.d.ts",
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,18 +1,22 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
+import eslint from 'vite-plugin-eslint';
 import Components from 'unplugin-vue-components/dist/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/dist/resolvers';
-import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    eslint(),
+    eslint({
+      lintOnStart: true,
+    }),
     Components({
       resolvers: [
-        AntDesignVueResolver(),
+        AntDesignVueResolver({
+          importStyle: false, // css in js
+        }),
       ],
     }),
   ],
@@ -22,18 +26,18 @@ export default defineConfig({
     }
   },
   server: {
-    // port: 4000, // 服务器端口
-    // open: true, // 是否自动打开浏览器
-    // cors: true,
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://www.baidu.com',
-    //     changeOrigin: true,
-    //     secure: false,
-    //     rewrite: (path) => {
-    //       return path.replace('/api/', '/');
-    //     }
-    //   }
-    // }
+    port: 4000, // 服务器端口
+    open: true, // 是否自动打开浏览器
+    cors: true,
+    proxy: {
+      '/api': {
+        target: 'https://cupid-service.qa.linkdoc.com',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => {
+          return path.replace('/api/', '/');
+        }
+      }
+    }
   },
 })

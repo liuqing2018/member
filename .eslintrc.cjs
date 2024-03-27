@@ -24,6 +24,9 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: [
+    "/dist/assets/*.js" // 排除/dist/assets目录下的所有.js文件
+  ],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -40,6 +43,7 @@ module.exports = {
     '@typescript-eslint/comma-dangle': 'off',
     '@typescript-eslint/promise-function-async': 'off',
     '@typescript-eslint/member-delimiter-style': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
     'vue/multi-word-component-names': 'off',
   },
 };
